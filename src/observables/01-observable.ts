@@ -63,7 +63,7 @@ function run() {
     obs$.subscribe(observer);
 };
 
-export { run as run_01 };
+export { run as sample_01 };
 
 
 
