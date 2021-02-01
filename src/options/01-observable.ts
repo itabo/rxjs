@@ -34,31 +34,35 @@ const obs$ = new Observable<string>(subscriber => {
 
 });
 
-function run() {
+function run(): Promise<void> {
 
-    /*
-        Un Observable sin subscripciones no emite valores. 
-        El subsciber (suscriptor) necesita notificarle por lo menos a un subscriber (abonado).
-     */
-    /* Forma 1.*/
-    //obs$.subscribe(console.log);
+    return new Promise<void>((resolve, reject) => {
+        /*
+            Un Observable sin subscripciones no emite valores. 
+            El subsciber (suscriptor) necesita notificarle por lo menos a un subscriber (abonado).
+         */
+        /* Forma 1.*/
+        //obs$.subscribe(console.log);
 
-    /* Forma 2.*/
-    /* Definimos las 3 funciones directamente en la subscripción  */
-    // obs$.subscribe(
-    //     value => console.log(`Recibimos el next(${value})`),
-    //     error => console.error('Capturamos el error: ', error),
-    //     () => console.info('Observable completado')
-    // );
+        /* Forma 2.*/
+        /* Definimos las 3 funciones directamente en la subscripción  */
+        // obs$.subscribe(
+        //     value => console.log(`Recibimos el next(${value})`),
+        //     error => console.error('Capturamos el error: ', error),
+        //     () => console.info('Observable completado')
+        // );
 
-    /* Forma 3.*/
-    /* +1 Se define un observer (interfaz) con las 3 funciones necesarias  */
-    const observer: Observer<string> = {
-        next: value => console.log(`Recibimos el next(${value})`),
-        error: error => console.error('Capturamos el error: ', error),
-        complete: () => console.info('Observable completado')
-    }
-    obs$.subscribe(observer);
+        /* Forma 3.*/
+        /* +1 Se define un observer (interfaz) con las 3 funciones necesarias  */
+        const observer: Observer<string> = {
+            next: value => console.log(`Recibimos el next(${value})`),
+            error: error => console.error('Capturamos el error: ', error),
+            complete: () => console.info('Observable completado')
+        }
+        obs$.subscribe(observer);
+        resolve();
+
+    });
 };
 
 export { run as sample_01 };

@@ -20,21 +20,21 @@ const meuOptions = [
                 value: '3',
                 name: `${'3.'.green} - Subject`
             },
-            {
-                value: '4',
-                name: `${'4.'.green} - xxxx`
-            },
-            {
-                value: '5',
-                name: `${'5.'.green} - xxxx`
-            },
-            {
-                value: '6',
-                name: `${'6.'.green} - xxxx`
-            },
+            // {
+            //     value: '4',
+            //     name: `${'4.'.green} - xxxx`
+            // },
+            // {
+            //     value: '5',
+            //     name: `${'5.'.green} - xxxx`
+            // },
+            // {
+            //     value: '6',
+            //     name: `${'6.'.green} - xxxx`
+            // },
             {
                 value: '0',
-                name: `${'0.'.green} - xxxx`
+                name: `${'0.'.green} - EXIT`
             },
         ]
     }

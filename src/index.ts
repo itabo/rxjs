@@ -11,6 +11,12 @@ const showSampleSection = (option: string, end: boolean = false) => {
     console.log(`\n${PREFIX} Option ${option} sample ${end ? 'end' : 'init'}. ${SUFIX}\n`.green);
 }
 
+const showSample = async (option: string, sample: () => Promise<void>) => {
+    console.log(`\n${PREFIX} Option ${option} sample init ${SUFIX}\n`.green);
+    await sample();
+    console.log(`\n${PREFIX} Option ${option} sample end ${SUFIX}\n`.green);
+}
+
 const main = async () => {
 
     let selectedOption = '';
@@ -23,23 +29,13 @@ const main = async () => {
 
         switch (selectedOption) {
             case '1':
-                showSampleSection(selectedOption);
-                console.log('sample_01()');
-                showSampleSection(selectedOption, true);
-                //sample_01();
+                await showSample(selectedOption, sample_01);
                 break;
             case '2':
-                showSampleSection(selectedOption);
-                console.log('sample_02()');
-                showSampleSection(selectedOption, true);
-                //await sample_02(true);
+                await showSample(selectedOption, sample_02);
                 break;
             case '3':
-                showSampleSection(selectedOption);
-                //await sample_03();
-                console.log('sample_03()');
-                showSampleSection(selectedOption, true);
-                break;
+                await showSample(selectedOption, sample_03);
             default:
                 break;
         }
@@ -49,6 +45,7 @@ const main = async () => {
 
     } while (selectedOption !== '0');
 
+    console.clear();
     console.log('\nThanks for watching :) !\n'.green);
 };
 
