@@ -39,28 +39,30 @@ const interval$ = new Observable<number>(
     }
 );
 
-function run(useTierDown: boolean = false) {
+function run(useTierDown: boolean = false): Promise<void> {
 
-    const subs1 = interval$.subscribe(observer);
-    const subs2 = interval$.subscribe(observer);
-    const subs3 = interval$.subscribe(observer);
+    return new Promise<void>((resolve, reject) => {
 
-    if (useTierDown)
-        // Mejora: Se utiliza para anidar varios subscribers.
-        subs1.add(subs2).add(subs3);
+        const subs1 = interval$.subscribe(observer);
+        const subs2 = interval$.subscribe(observer);
+        const subs3 = interval$.subscribe(observer);
 
-    setTimeout(() => {
-        subs1.unsubscribe();
+        if (useTierDown)
+            // Mejora: Se utiliza para anidar varios subscribers.
+            subs1.add(subs2).add(subs3);
 
-        if (!useTierDown) {
-            subs2.unsubscribe();
-            subs3.unsubscribe();
-        }
+        setTimeout(() => {
+            subs1.unsubscribe();
 
-        console.info(':subscriptions unsubscribed');
-    }, 10000)
+            if (!useTierDown) {
+                subs2.unsubscribe();
+                subs3.unsubscribe();
+            }
 
-
+            console.info(':subscriptions unsubscribed');
+            resolve();
+        }, 10000)
+    });
 };
 
 export { run as sample_02 };

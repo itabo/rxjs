@@ -33,31 +33,35 @@ const interval$ = new Observable<number>(
     }
 );
 
-function run() {
+function run(): Promise<void> {
 
-    /* Las subscripciónes reciben el mismo valor random si nos subscribimos al subject */
-    const subject$ = new Subject<number>();
-    const subjectSubscription = interval$.subscribe(subject$);
+    return new Promise<void>((resolve, reject) => {
+        /* Las subscripciónes reciben el mismo valor random si nos subscribimos al subject */
+        const subject$ = new Subject<number>();
+        const subjectSubscription = interval$.subscribe(subject$);
 
-    const subs1 = subject$.subscribe( observer );
-    const subs2 = subject$.subscribe( observer );
+        const subs1 = subject$.subscribe(observer);
+        const subs2 = subject$.subscribe(observer);
 
-    /* Cada subscripción recibe un valor random diferente si nos subscribimos al observable */
-    // const subs1 = interval$.subscribe(value => console.log('subs1: ', value));
-    // const subs2 = interval$.subscribe(value => console.log('subs2: ', value));
-    
-    setTimeout(() => {
+        /* Cada subscripción recibe un valor random diferente si nos subscribimos al observable */
+        // const subs1 = interval$.subscribe(value => console.log('subs1: ', value));
+        // const subs2 = interval$.subscribe(value => console.log('subs2: ', value));
 
-        console.info(':subject injecting value');
-        subject$.next(10);
-        
-        subject$.complete();
-        console.info(':subject completed');
+        setTimeout(() => {
 
-        subjectSubscription.unsubscribe();
-        console.info(':subjectSubscription unsubscribed');
+            console.info(':subject injecting value');
+            subject$.next(10);
 
-    }, 5000);
+            subject$.complete();
+            console.info(':subject completed');
+
+            subjectSubscription.unsubscribe();
+            console.info(':subjectSubscription unsubscribed');
+
+            resolve();
+
+        }, 5000);
+    });
 
 
 };

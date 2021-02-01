@@ -14,7 +14,7 @@ const obs$ = new Observable<string>(subscriber => {
     */
 
     // const a = undefined;
-    // a.nombre = 'Esto no funciona'    
+    // a.nombre = 'Esto no funciona';
 
     //subscriber.error({ msg: 'Forzamos error' });
 
@@ -25,8 +25,6 @@ const obs$ = new Observable<string>(subscriber => {
         Deja de emitir. 
         Cualquier emision posterior no será emitida
     */
-
-
     subscriber.complete();
 
     //#endregion

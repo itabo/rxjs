@@ -1,25 +1,22 @@
-# Funcionamiento RXJS
-
-* Lo primero que debemos de hacer después de descargar el código es ejecutar el comando:
-
-```
-npm install
-```
-Ese comando descargará todos los módulos de node necesarios para ejecutar el proyecto.
 
 
-* Cuando termine de instalar los node_modules, entonces podermos ejecutar el proyecto de con el siguiente comando
+* 1. Clone repository from [here](https://github/itabo/cambiaraca).
 
-```
-npm start
-```
-Para que eso funcione, recuerden que deben de ejecutar ese comando en el mismo directorio donde se encuentra el ```package.json```
+* 2. run ```npm install``` to install all the dependencies.
 
-## Cambiar el puerto
-Por defecto, el puerto que configuré para este proyecto es el ```8081```, pero si necesitan cambiarlo porque pueda que ese puerto lo use su computadora, pueden cambiarlo abriendo el ```package.json``` >> scripts. Ahí verán la instrucción que lanza el servidor de desarrollo
+* 3. run ```npm start``` to start the application.
 
-```
-"start": "webpack serve --mode development --open --port=8081"
-```
+* 4. Select what sample you want to execute and enjoy!
 
-Simplemente cambian el puerto por el que ustedes necesiten y listo. (lógicamente graban los cambios antes de ejecutar el ```npm start``` nuevamente)
+# What you will find?
+
+## Rx Objects and Operators
+* 1. Observable.
+* 2. Unsubscribe Add.
+* 2. Subjects.
+
+## Extras
+
+* 1. Console application (CLI) using [inquirer](https://www.npmjs.com/package/inquirer).
+
+* 2. TypeScript project.
