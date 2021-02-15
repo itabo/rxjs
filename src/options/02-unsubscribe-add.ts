@@ -1,14 +1,18 @@
 /**
- * Evitar fugas de memoria:
- *  - función de retorno en los Observable.
- *  - unsubscribe() de los subscriptions.
+ * Note: Avoid memory leaks:
+  * - return function on Observables.
+  * - unsubscribe() of subscriptions.
  */
 import { Observable, Observer } from 'rxjs';
 
+const _sims = 2000;
+const _stms = 8000;
+const _st2ms= 10000;
+
 const observer: Observer<number> = {
-    next: value => console.log(`[next]: (${value})`),
-    error: error => console.error('[error]: ', error),
-    complete: () => console.info('[completed]')
+    next: value => console.log(`Listen the next(): ${value}`),
+    error: error => console.error('Catch error(): ', error),
+    complete: () => console.info('completed()')
 }
 
 const interval$ = new Observable<number>(
@@ -19,22 +23,23 @@ const interval$ = new Observable<number>(
         const intervalId =
             setInterval(() => {
                 counter++;
-                console.info(':setInterval emit');
+                console.info('--> setInterval() emitting');
                 subs.next(counter);
-            }, 1500);
+            }, _sims);
 
-        /*  Una vez completado el subscriber, se ejecuta el complete() del observer y se termina.
-            Nota: Por mas que se completa, los suscriptores no quedan desuscriptos. 
-            Hay que llamar al unsuscribe() de todas maneras.
+        /*  
+            Note: Once the subscriber is completed, the observer's complete() method is 
+            executed and terminated but the subscribers are not unsubscribed.
+            You have to call unsuscribe() anyway.
         */
-        setTimeout(() => subs.complete(), 8000);
+        setTimeout(() => subs.complete(), _stms);
 
 
-        // Se ejecuta cuando se hace el unsubscribe() o cuando se ejecuta el comlete().
-        //Ej. Cuando me desuscriba, quiero que el setInterval() deje de emitir.
+        // When unsubscribe() or complete().
+        //IE. We want to stop emmiting when unsubscribe() or complete().
         return () => {
             clearInterval(intervalId);
-            console.info(':setInterval down');
+            console.info('--> setInterval() down');
         }
     }
 );
@@ -47,11 +52,13 @@ function run(useTierDown: boolean = false): Promise<void> {
         const subs2 = interval$.subscribe(observer);
         const subs3 = interval$.subscribe(observer);
 
-        if (useTierDown)
-            // Mejora: Se utiliza para anidar varios subscribers.
+        if (useTierDown){
+            // (+1) Improvement: Used to nest multiple subscribers.
             subs1.add(subs2).add(subs3);
+        }
 
         setTimeout(() => {
+            
             subs1.unsubscribe();
 
             if (!useTierDown) {
@@ -59,9 +66,11 @@ function run(useTierDown: boolean = false): Promise<void> {
                 subs3.unsubscribe();
             }
 
-            console.info(':subscriptions unsubscribed');
+            console.info('--> subscriptions unsubscribed');
+            
             resolve();
-        }, 10000)
+
+        }, _st2ms)
     });
 };
 

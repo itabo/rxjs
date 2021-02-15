@@ -1,34 +1,48 @@
 /*
- *  Subject():
-        1- Es un agrupador de subscripciones. Permite emitir el mismo valor a todas las subscriptions.
-        2- Casteos múltiples.
-        3- También es un observer.
-        4- next(), error(), complete()
+ (EN)
+ Subject():
+    1- It is a group of subscriptions. Allows to issue the same value to all subscriptions.
+    2- Multiple castings.
+    3- It's also an Observer.
+    4- Actions: next(), error(), complete().
     
-    - COLD Observable: Cuando la data es producida por un Observable en si mismo
-    - HOT Observable: Cuando la data es producida fuera un Observable.
- */
+    - COLD Observable: When the info is produced by an Observable itself.
+    - HOT Observable: When the info is produced outside the Observable.
+
+(ES)
+Subject():
+    1- Es un agrupador de subscripciones. Permite emitir el mismo valor a todas las subscriptions.
+    2- Casteos múltiples.
+    3- También es un Observer.
+    4- Acciones: next(), error(), complete().
+    
+    - Observable FRIO: Cuando la información es producida por un Observable en si mismo.
+    - Observable CALIENTE: Cuando la información es producida fuera un Observable.
+*/
 
 import { Observable, Observer, Subject } from 'rxjs';
 
+const _sims = 1500;
+const _stms = 5000;
+
 const observer: Observer<number> = {
-    next: value => console.log(`[next]: (${value})`),
-    error: error => console.error('[error]: ', error),
-    complete: () => console.info('[completed]')
+    next: value => console.log(`Listen the next(): ${value}`),
+    error: error => console.error('Catch error(): ', error),
+    complete: () => console.info('completed()')
 }
 
 const interval$ = new Observable<number>(
     subs => {
 
         const intervalId = setInterval(() => {
-            console.info(':setInterval emit');
+            console.info('--> setInterval emit');
             subs.next(Math.random());
-        }, 1500);
+        }, _sims);
 
-        //Cuando se completa el observable | se llama al unsubscribe, se ejecuta la func. de retorno.
+        // When unsubscribe() or complete().
         return () => {
             clearInterval(intervalId);
-            console.info(':setInterval down');
+            console.info('--> setInterval() down');
         }
     }
 );
@@ -36,31 +50,27 @@ const interval$ = new Observable<number>(
 function run(): Promise<void> {
 
     return new Promise<void>((resolve, reject) => {
-        /* Las subscripciónes reciben el mismo valor random si nos subscribimos al subject */
+        /* Subscriptions receive the same random value if we subscribe to the subject. */
         const subject$ = new Subject<number>();
         const subjectSubscription = interval$.subscribe(subject$);
 
         const subs1 = subject$.subscribe(observer);
         const subs2 = subject$.subscribe(observer);
 
-        /* Cada subscripción recibe un valor random diferente si nos subscribimos al observable */
-        // const subs1 = interval$.subscribe(value => console.log('subs1: ', value));
-        // const subs2 = interval$.subscribe(value => console.log('subs2: ', value));
-
         setTimeout(() => {
 
-            console.info(':subject injecting value');
+            console.info('--> subject injecting value');
             subject$.next(10);
 
+            console.info('--> subject complete()');
             subject$.complete();
-            console.info(':subject completed');
 
             subjectSubscription.unsubscribe();
-            console.info(':subjectSubscription unsubscribed');
+            console.info('--> subjectSubscription unsubscribed()');
 
             resolve();
 
-        }, 5000);
+        }, _stms);
     });
 
 

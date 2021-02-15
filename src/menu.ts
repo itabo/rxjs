@@ -10,9 +10,6 @@ const showMenu = (): Promise<string> => {
         console.log(`${'1.'.green} - Observable`);
         console.log(`${'2.'.green} - Unsubscribe Add`);
         console.log(`${'3.'.green} - Subject`);
-        console.log(`${'4.'.green} - `);
-        console.log(`${'5.'.green} - `);
-        console.log(`${'6.'.green} - `);
         console.log(`${'0.'.green} - EXIT`);
         console.log('');
 
@@ -22,9 +19,6 @@ const showMenu = (): Promise<string> => {
         });
 
         rl.question('=========> Select option: '.green, (answer) => {
-
-            //console.log({ answer });
-            //Need to call close() to stop wathing the answer.
             rl.close();
             resolve(answer);
         });

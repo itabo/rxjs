@@ -24,9 +24,7 @@ const main = async () => {
 
         selectedOption =
             await showInquirerMenu();
-        //await showMenu();
-        //console.log(selectedOption);
-
+        
         switch (selectedOption) {
             case '1':
                 await showSample(selectedOption, sample_01);
