@@ -6,8 +6,17 @@
     3- It's also an Observer.
     4- Actions: next(), error(), complete().
     
-    - COLD Observable: When the info is produced by an Observable itself.
-    - HOT Observable: When the info is produced outside the Observable.
+    - COLD vs HOT:  
+    
+    A “hot” Observable may begin emitting items as soon as it is created, 
+    and so any observer who later subscribes to that Observable may start observing the 
+    sequence somewhere in the middle. 
+    
+    A “cold” Observable, on the other hand, waits until an observer subscribes to it before 
+    it begins to emit items, and so such an observer is guaranteed to see the whole sequence 
+    from the beginning.
+
+    *source: http://reactivex.io/documentation/observable.html
 
 (ES)
 Subject():
@@ -16,8 +25,17 @@ Subject():
     3- También es un Observer.
     4- Acciones: next(), error(), complete().
     
-    - Observable FRIO: Cuando la información es producida por un Observable en si mismo.
-    - Observable CALIENTE: Cuando la información es producida fuera un Observable.
+    - FRIO vs CALIENTE:  
+    
+    Un Observable "caliente" puede comenzar a emitir elementos tan pronto como se crea,
+     y así cualquier observador que luego se suscriba a ese Observable puede comenzar a observar
+     secuencia en algún lugar en el medio.
+    
+    Un Observable "frío", por otro lado, espera hasta que un observador se suscribe antes
+    comienza a emitir elementos, por lo que se garantiza que tal observador verá la secuencia completa
+    desde el principio.
+
+    *source: http://reactivex.io/documentation/observable.html
 */
 
 import { Observable, Observer, Subject } from 'rxjs';

@@ -2,7 +2,7 @@
 
 The objective of this repository is to help NodeJS developer community with practical examples for better understunding of one of the most used libraries in the reactive programming ecosystem: [ReactiveX](http://reactivex.io/). 
 
-This examples are based on [devdocs.io](https://devdocs.io/rxjs/).
+This examples are based on [devdocs.io](https://devdocs.io/rxjs/) & [ReactiveX Site Docs](http://reactivex.io/).
 
 # What you will find?
 
