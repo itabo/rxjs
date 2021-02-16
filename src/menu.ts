@@ -10,6 +10,7 @@ const showMenu = (): Promise<string> => {
         console.log(`${'1.'.green} - Observable`);
         console.log(`${'2.'.green} - Unsubscribe Add`);
         console.log(`${'3.'.green} - Subject`);
+        console.log(`${'4.'.green} - of`);
         console.log(`${'0.'.green} - EXIT`);
         console.log('');
 

@@ -1,9 +1,9 @@
 import { showInquirerMenu, pauseInquirer } from './app-inquirer';
 import { PREFIX, SUFIX } from './helpers/pre-sufix.helper';
-import { showMenu, pause } from './menu';
 import { sample_01 } from './options/01-observable';
 import { sample_02 } from './options/02-unsubscribe-add';
 import { sample_03 } from './options/03-subject';
+import { sample_04 } from './options/functions/04-of';
 
 //#region Main
 
@@ -24,7 +24,7 @@ const main = async () => {
 
         selectedOption =
             await showInquirerMenu();
-        
+
         switch (selectedOption) {
             case '1':
                 await showSample(selectedOption, sample_01);
@@ -34,6 +34,8 @@ const main = async () => {
                 break;
             case '3':
                 await showSample(selectedOption, sample_03);
+            case '4':
+                await showSample(selectedOption, sample_04);
             default:
                 break;
         }
