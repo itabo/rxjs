@@ -1,5 +1,4 @@
 import { Observable, Observer } from 'rxjs';
-import { resolveModuleName } from 'typescript';
 
 const obs$ = new Observable<string>(subscriber => {
 
