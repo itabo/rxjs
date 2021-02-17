@@ -24,6 +24,10 @@ const meuOptions = [
                 value: '4',
                 name: `${'4.'.green} - Of`
             },
+            {
+                value: '5',
+                name: `${'5.'.green} - fromEvent`
+            },
             // {
             //     value: '4',
             //     name: `${'4.'.green} - xxxx`

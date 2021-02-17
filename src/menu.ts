@@ -11,6 +11,7 @@ const showMenu = (): Promise<string> => {
         console.log(`${'2.'.green} - Unsubscribe Add`);
         console.log(`${'3.'.green} - Subject`);
         console.log(`${'4.'.green} - of`);
+        console.log(`${'5.'.green} - fromEvent`);
         console.log(`${'0.'.green} - EXIT`);
         console.log('');
 

@@ -13,3 +13,44 @@
     from the event handler as parameters and returns an item to be emitted by the resulting Observable 
     in place of the event.
  */
+
+import { fromEvent } from 'rxjs';
+
+let fromEventSubscribe: () => void;
+
+try{
+
+    //const btnElement: HTMLElement = document.getElementById('fromEventBtn');
+    
+    const $obs = fromEvent(document, 'click');
+    
+    fromEventSubscribe = (): void => {
+        $obs.subscribe(
+            next => console.log(`Listen the next(): ${next}`),
+            error => console.error('Catch error(): ', error),
+            () => console.info('completed()')
+        );
+    }
+}
+catch(error){
+
+}
+
+function run(): Promise<void> {
+
+    return new Promise<void>((resolve, reject) => {
+        const instructions =
+            `
+        1. open new terminal and run "npm run start:wp".
+        2. Follow the instructions described in the browser.
+        `;
+
+        console.log(instructions);
+
+
+        resolve();
+    });
+}
+
+
+export { run as sample_05, fromEventSubscribe };
