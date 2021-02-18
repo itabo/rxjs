@@ -1,18 +1,54 @@
 import 'colors';
 import { createInterface } from 'readline';
 
+interface Menu {
+    id: number;
+    name: string;
+}
+
+const menu: Menu[] = [
+    {
+        id: 1, 
+        name: 'Observable'
+    },
+    {
+        id: 2, 
+        name: 'Unsubscribe Add'
+    },
+    {
+        id: 3, 
+        name: 'Subject'
+    },
+    {
+        id: 4, 
+        name: 'of'
+    },
+    {
+        id: 5, 
+        name: 'fromEvent'
+    },
+    {
+        id: 6, 
+        name: 'range'
+    },
+    {
+        id: 0, 
+        name: 'EXIT'
+    },
+
+]
+
 const showMenu = (): Promise<string> => {
 
     return new Promise<string>((resolve, reject) => {
 
         console.clear();
         console.log('=========> Menu \n'.green);
-        console.log(`${'1.'.green} - Observable`);
-        console.log(`${'2.'.green} - Unsubscribe Add`);
-        console.log(`${'3.'.green} - Subject`);
-        console.log(`${'4.'.green} - of`);
-        console.log(`${'5.'.green} - fromEvent`);
-        console.log(`${'0.'.green} - EXIT`);
+        
+        menu.forEach((value: Menu, index: number, array: Menu[]) => {
+            console.log(`${value.id.toString().green} ${value.name}`);
+        });        
+        
         console.log('');
 
         const rl = createInterface({
