@@ -1,15 +1,15 @@
 import { showInquirerMenu, pauseInquirer } from './app-inquirer';
 import { PREFIX, SUFIX } from './helpers/pre-sufix.helper';
 import { MENU } from './menu';
-import { sample_01 } from './options/01-observable';
-import { sample_02 } from './options/02-unsubscribe-add';
-import { sample_03 } from './options/03-subject';
-import { sample_04 } from './options/functions/04-of';
-import { sample_05 } from './options/functions/05-fromEvent';
-import { sample_06 } from './options/functions/06-range';
-import { sample_07 } from './options/functions/07-timer';
-import { sample_08 } from './options/functions/08-interval';
-import { sample_09 } from './options/functions/09-asyncScheduler';
+import { sample_01 } from './options/observable';
+import { sample_02 } from './options/unsubscribe-add';
+import { sample_03 } from './options/subject';
+import { sample_04 } from './options/functions/of';
+import { sample_05 } from './options/functions/fromEvent';
+import { sample_06 } from './options/functions/range';
+import { sample_07 } from './options/functions/timer';
+import { sample_08 } from './options/functions/interval';
+import { sample_09 } from './options/functions/asyncScheduler';
 
 
 

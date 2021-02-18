@@ -1,4 +1,4 @@
-import { fromEventSubscribe } from './options/functions/05-fromEvent';
+import { fromEventSubscribe } from './options/functions/fromEvent';
 
 // function component() {
 //   const element = document.createElement('div');

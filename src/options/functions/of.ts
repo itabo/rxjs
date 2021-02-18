@@ -7,7 +7,7 @@
     It's Completed after the last emission. 
 */
 
-import { of } from 'rxjs';
+import { of, from } from 'rxjs';
 
 interface Data {
     name: string, age: number
@@ -21,6 +21,8 @@ function run(): Promise<void> {
         const $obs = of<number>(...[1, 2, 3], 9 , 8, 7, 6, 5, 4);
         //const $obs = of<boolean>(true, false);
         //const $obs = of<Data>({ name: 'John', age: 23 }, { name: 'Katy', age: 38 });
+
+        //const $obs = from([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
 
         const $subsciption = $obs.subscribe(
             next => console.log(`Listen the next(): ${JSON.stringify(next)}`),
