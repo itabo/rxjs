@@ -2,8 +2,6 @@ import 'colors';
 import inquirer from 'inquirer';
 import { PREFIX, SUFIX } from './helpers/pre-sufix.helper';
 
-
-
 const showInquirerMenu = async (menu) => {
 
     console.clear();

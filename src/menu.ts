@@ -32,6 +32,14 @@ const menu: Menu[] = [
         name: 'range'
     },
     {
+        id: 7, 
+        name: 'timer'
+    },
+    {
+        id: 8, 
+        name: 'interval'
+    },
+    {
         id: 0, 
         name: 'EXIT'
     },

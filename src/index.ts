@@ -6,6 +6,8 @@ import { sample_03 } from './options/03-subject';
 import { sample_04 } from './options/functions/04-of';
 import { sample_05 } from './options/functions/05-fromEvent';
 import { sample_06 } from './options/functions/06-range';
+import { sample_07 } from './options/functions/07-timer';
+import { sample_08 } from './options/functions/08-interval';
 
 const menu = [
     {
@@ -36,7 +38,15 @@ const menu = [
             {
                 value: '6',
                 name: `${'6.'.green} - range`
-            },            
+            },
+            {
+                value: '7',
+                name: `${'7.'.green} - timer`
+            },
+            {
+                value: '8',
+                name: `${'8.'.green} - interval`
+            },
             {
                 value: '0',
                 name: `${'0.'.green} - EXIT`
@@ -92,7 +102,7 @@ const main = async () => {
                 break;
             case '6':
                 // await showSample(selectedOption, sample_06(true));
-                
+
                 const sub_menu_6 = [
                     {
                         type: 'list',
@@ -110,10 +120,22 @@ const main = async () => {
                         ]
                     }
                 ];
-                
+
                 const answer_6 = await showInquirerMenu(sub_menu_6);
-                const isAsync: boolean = answer_6 === 'async';                
+                const isAsync: boolean = answer_6 === 'async';
                 await sample_06(isAsync);
+                break;
+            case '7':
+                await sample_07();
+                break;
+            case '8':
+                await sample_08();
+                break;
+            case '9':
+                //await sample_09();
+                break;
+            case '10':
+                //await sample_10();
                 break;
             default:
                 break;
