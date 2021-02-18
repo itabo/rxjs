@@ -1,5 +1,6 @@
 import { showInquirerMenu, pauseInquirer } from './app-inquirer';
 import { PREFIX, SUFIX } from './helpers/pre-sufix.helper';
+import { MENU } from './menu';
 import { sample_01 } from './options/01-observable';
 import { sample_02 } from './options/02-unsubscribe-add';
 import { sample_03 } from './options/03-subject';
@@ -8,52 +9,9 @@ import { sample_05 } from './options/functions/05-fromEvent';
 import { sample_06 } from './options/functions/06-range';
 import { sample_07 } from './options/functions/07-timer';
 import { sample_08 } from './options/functions/08-interval';
+import { sample_09 } from './options/functions/09-asyncScheduler';
 
-const menu = [
-    {
-        type: 'list',
-        name: 'selection',
-        message: 'What sample do you want?',
-        choices: [
-            {
-                value: '1',
-                name: `${'1.'.green} - Observable`
-            },
-            {
-                value: '2',
-                name: `${'2.'.green} - Unsubscribe Add`
-            },
-            {
-                value: '3',
-                name: `${'3.'.green} - Subject`
-            },
-            {
-                value: '4',
-                name: `${'4.'.green} - Of`
-            },
-            {
-                value: '5',
-                name: `${'5.'.green} - fromEvent`
-            },
-            {
-                value: '6',
-                name: `${'6.'.green} - range`
-            },
-            {
-                value: '7',
-                name: `${'7.'.green} - timer`
-            },
-            {
-                value: '8',
-                name: `${'8.'.green} - interval`
-            },
-            {
-                value: '0',
-                name: `${'0.'.green} - EXIT`
-            },
-        ]
-    }
-];
+
 
 type SampleFunction = (a?: any) => Promise<void>;
 
@@ -75,7 +33,7 @@ const main = async () => {
     do {
 
         selectedOption =
-            await showInquirerMenu(menu);
+            await showInquirerMenu(MENU);
 
         console.log(`\n${PREFIX} Option ${selectedOption} sample init ${SUFIX}\n`.green);
 
@@ -132,7 +90,7 @@ const main = async () => {
                 await sample_08();
                 break;
             case '9':
-                //await sample_09();
+                await sample_09();
                 break;
             case '10':
                 //await sample_10();
