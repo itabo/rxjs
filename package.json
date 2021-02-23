@@ -4,9 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build:wp": "webpack",
+    "start:wp": "npm run build:wp && webpack serve --mode development --open --port=8081",
     "build": "tsc -p .",
-    "start": "ts-node src/index.ts",
-    "start:js": "node dist/index.js"
+    "start": "ts-node src/index.ts"
   },
   "dependencies": {
     "@types/node": "^14.14.22",
@@ -19,7 +20,10 @@
   "devDependencies": {
     "@types/inquirer": "^7.3.1",
     "css-loader": "^5.0.1",
-    "ts-loader": "^8.0.14"
+    "ts-loader": "^8.0.17",
+    "webpack": "^5.22.0",
+    "webpack-cli": "^4.5.0",
+    "webpack-dev-server": "^3.11.2"
   },
   "author": "",
   "license": "ISC"

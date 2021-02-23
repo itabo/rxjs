@@ -2,24 +2,15 @@
 
 The objective of this repository is to help NodeJS developer community with practical examples for better understunding of one of the most used libraries in the reactive programming ecosystem: [ReactiveX](http://reactivex.io/). 
 
-This examples are based on [devdocs.io](https://devdocs.io/rxjs/).
+This examples are based on [devdocs.io](https://devdocs.io/rxjs/) & [ReactiveX Site Docs](http://reactivex.io/).
+
+See [changelog](./changelog.md) file for more information.
 
 # What you will find?
 
-New operator sample every week.
-
-## Realase v1.0.0
-
-### Rx Objects and Operators
-* Observable.
-* Unsubscribe Add.
-* Subjects.
-
-### Extras
-
-* Console application (CLI) using [inquirer](https://www.npmjs.com/package/inquirer).
-
-* TypeScript project.
+- Interactive examples of the most common/used operators to use for better understanding.
+- Every file contains an explanation and link references to the operator.
+- New operator sample every week.
 
 # How to run the app?
 
